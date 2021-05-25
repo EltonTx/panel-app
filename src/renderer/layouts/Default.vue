@@ -3,7 +3,7 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+          <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/' + config.videoId + '?autoplay=1&loop=1&playlist=' + config.videoId + ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
           <img :src="logoUrl">
@@ -11,6 +11,12 @@
       </div>
       <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
         <header>
+          <div class="featured-sidebar-column">
+            <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+          </div>
+
+          <hr />
+
           <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
             {{ 'history.title'|trans }}
           </h2>
@@ -90,6 +96,8 @@
         font-weight: bold
 
   .featured-column
+      iframe
+        height: 73vh
       header
         height: 80vh
       footer
@@ -106,6 +114,17 @@
           font-size: 10vh
         .description
           font-size: 10vh
+
+  .featured-sidebar-column
+    .featured-message
+      text-align: center
+      .title
+        font-size: 10vh
+        font-weight: bold
+      .subtitle
+        font-size: 5vh
+      .description
+        font-size: 5vh
 
   .history-column
     height: 100vh

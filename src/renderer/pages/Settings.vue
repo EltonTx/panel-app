@@ -39,6 +39,11 @@
                 {{ 'menu.sound'|trans }}
               </a>
             </li>
+            <li>
+              <a @click="showTab('video')">
+                {{ 'menu.video'|trans }}
+              </a>
+            </li>            
           </ul>
         </aside>
       </div>
@@ -365,6 +370,34 @@
             </div>
           </div>
           -->
+          <hr>
+
+          <div class="field is-grouped is-grouped-right">
+            <div class="control">
+              <button type="submit" class="button is-primary is-large">
+                {{ 'settings.btn.save'|trans }} &nbsp;
+                <span class="icon is-small">
+                  <i class="fa fa-save"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <form @submit.prevent="save" v-if="tab==='video'">
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label class="label">
+                  {{ 'settings.label.video_id'|trans }}
+                </label>
+                <div class="control">
+                  <input class="input is-medium" type="text" placeholder="P7jCYs7v-zw" v-model="config.videoId">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <hr>
 
           <div class="field is-grouped is-grouped-right">
