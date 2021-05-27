@@ -355,11 +355,11 @@
               </a>
             </div>
           </div>
-          <!--
+          
           <div class="field">
             <div class="control has-addons">
               <label class="checkbox">
-                <input type="checkbox" v-model="config.services">
+                <input type="checkbox" v-model="config.speechEnabled">
                 {{ 'settings.label.speech_enabled'|trans }}
               </label>
               <a class="button" title="Play">
@@ -369,7 +369,7 @@
               </a>
             </div>
           </div>
-          -->
+         
           <hr>
 
           <div class="field is-grouped is-grouped-right">

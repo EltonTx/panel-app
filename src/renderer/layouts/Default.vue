@@ -35,6 +35,7 @@
   import Featured from '@/components/Featured.vue'
   import History from '@/components/History.vue'
   import audio from '@/services/audio'
+  import speech from '@/services/speech'
 
   export default {
     name: 'Default',
@@ -68,6 +69,17 @@
     methods: {
       playAudio () {
         audio.playAlert(this.config.alert)
+
+        let speechEnabled = this.config.speechEnabled
+
+        if (speechEnabled) {
+          let message = this.$store.getters.message
+          speech.speechAll([
+            'Senha',
+            message.title,
+            message.subtitle
+          ], 'pt-BR')
+        }
       }
     }
   }
