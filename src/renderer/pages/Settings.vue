@@ -389,10 +389,18 @@
             <div class="column">
               <div class="field">
                 <label class="label">
+                  {{ 'settings.label.video_enabled'|trans }}
+                </label>
+                <div class="control">
+                  <input class="is-medium" type="checkbox" v-model="config.videoEnabled">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">
                   {{ 'settings.label.video_id'|trans }}
                 </label>
                 <div class="control">
-                  <input class="input is-medium" type="text" placeholder="P7jCYs7v-zw" v-model="config.videoId">
+                  <input class="input is-medium" type="text" placeholder="PLabp7FLRDVZuQnrve2Bd_7mZAEjnvA935" v-model="config.videoId">
                 </div>
               </div>
             </div>

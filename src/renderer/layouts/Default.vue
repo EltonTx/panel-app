@@ -3,7 +3,7 @@
     <div class="columns is-gapless">
       <div class="column is-multiline featured-column">
         <header class="column">
-          <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/' + config.videoId + '?autoplay=1&loop=1&playlist=' + config.videoId + ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/videoseries?autoplay=1&loop=1&list=' + config.videoId + ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </header>
         <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
           <img :src="logoUrl">
@@ -156,9 +156,9 @@
           text-align: left
           display: block
         .title
-          font-size: 8vh
+          font-size: 5.5vh
           font-weight: bold
         .subtitle
-          font-size: 4vh
+          font-size: 2.75vh
           font-style: italic
 </style>
