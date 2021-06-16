@@ -1,30 +1,57 @@
 <template>
-  <div class="layout-content" :style="{ 'background-color': pageBgColor, 'color': pageFontColor }">
-    <div class="columns is-gapless">
-      <div class="column is-multiline featured-column">
-        <header class="column">
-          <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/videoseries?autoplay=1&loop=1&list=' + config.videoId + ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </header>
-        <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
-          <img :src="logoUrl">
-        </footer>
+  <div v-if="config.videoEnabled">
+    <div class="layout-content" :style="{ 'background-color': pageBgColor, 'color': pageFontColor }">
+      <div class="columns is-gapless">
+        <div class="column is-multiline featured-column">
+          <header class="column">
+            <iframe width="100%" height="100%" :src="'https://www.youtube.com/embed/videoseries?autoplay=1&loop=1&list=' + config.videoId + ''" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </header>
+          <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
+            <img :src="logoUrl">
+          </footer>
+        </div>
+        <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
+          <header>
+            <div class="featured-sidebar-column">
+              <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
+            </div>
+
+            <hr />
+
+            <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
+              {{ 'history.title'|trans }}
+            </h2>
+            <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
+          </header>
+          <footer :style="{ 'background-color': config.clockBgColor, 'color': config.clockFontColor }">
+            <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
+          </footer>
+        </div>
       </div>
-      <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
-        <header>
-          <div class="featured-sidebar-column">
+    </div>
+  </div>
+  <div v-else>
+    <div class="layout-content" :style="{ 'background-color': pageBgColor, 'color': pageFontColor }">
+      <div class="columns is-gapless">
+        <div class="column is-multiline featured-column">
+          <header class="column">
             <featured :message="lastMessage" v-if="lastMessage" @blink="playAudio" :fontColor="pageFontColor"></featured>
-          </div>
-
-          <hr />
-
-          <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
-            {{ 'history.title'|trans }}
-          </h2>
-          <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
-        </header>
-        <footer :style="{ 'background-color': config.clockBgColor, 'color': config.clockFontColor }">
-          <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
-        </footer>
+          </header>
+          <footer class="column" :style="{ 'background-color': config.footerBgColor, 'color': config.footerFontColor }">
+            <img :src="logoUrl">
+          </footer>
+        </div>
+        <div class="column is-one-quarter history-column" :style="{ 'background-color': config.sidebarBgColor, 'color': config.sidebarFontColor }">
+          <header>
+            <h2 class="title" :style="{ 'color': config.sidebarFontColor }">
+              {{ 'history.title'|trans }}
+            </h2>
+            <history :messages="messages" v-if="lastMessage" :fontColor="config.sidebarFontColor"></history>
+          </header>
+          <footer :style="{ 'background-color': config.clockBgColor, 'color': config.clockFontColor }">
+            <clock :locale="config.locale" :dateFormat="'date_format'|trans" :fontColor="config.clockFontColor"></clock>
+          </footer>
+        </div>
       </div>
     </div>
   </div>
