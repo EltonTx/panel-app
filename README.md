@@ -25,5 +25,5 @@ npm run dev
 npm run build
 
 # build for web
-npm run build web
+npm run build:web
 ```
