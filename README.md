@@ -23,4 +23,7 @@ npm run dev
 
 # build for production with minification
 npm run build
+
+# build for web
+npm run build web
 ```
